@@ -1,0 +1,11 @@
+{
+  "name": "egc-dashboard-template",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "npm run build && node --check scripts/build.mjs"
+  },
+  "license": "MIT"
+}

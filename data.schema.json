@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EGC dashboard data",
+  "type": "object",
+  "required": ["generated_at", "periods", "team", "members"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" },
+    "periods": {
+      "type": "array",
+      "items": { "enum": ["7d", "30d", "90d", "180d", "all"] },
+      "minItems": 1
+    },
+    "total_followers": { "type": "number" },
+    "team": { "$ref": "#/$defs/periodMap" },
+    "members": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/member" }
+    }
+  },
+  "$defs": {
+    "periodMap": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/period" }
+    },
+    "member": {
+      "type": "object",
+      "required": ["name", "periods"],
+      "properties": {
+        "user_record_id": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "headline": { "type": "string" },
+        "followers_total": { "type": "number" },
+        "linkedin_connected": { "type": "boolean" },
+        "status": { "type": "string" },
+        "slug": { "type": "string" },
+        "photo": { "type": "string" },
+        "periods": { "$ref": "#/$defs/periodMap" }
+      }
+    },
+    "period": {
+      "type": "object",
+      "properties": {
+        "posts": { "type": "number" },
+        "impressions": { "type": "number" },
+        "likes": { "type": "number" },
+        "comments": { "type": "number" },
+        "reposts": { "type": "number" },
+        "engagements": { "type": "number" },
+        "eng_rate": { "type": "number" },
+        "avg": {
+          "type": "object",
+          "properties": {
+            "impressions": { "type": "number" },
+            "likes": { "type": "number" },
+            "comments": { "type": "number" },
+            "reposts": { "type": "number" }
+          }
+        },
+        "top_posts": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/topPost" }
+        }
+      }
+    },
+    "topPost": {
+      "type": "object",
+      "required": ["posted_at", "impressions"],
+      "properties": {
+        "urn": { "type": "string" },
+        "url": { "type": "string" },
+        "posted_at": { "type": "string", "format": "date-time" },
+        "impressions": { "type": "number" },
+        "likes": { "type": "number" },
+        "comments": { "type": "number" },
+        "reposts": { "type": "number" },
+        "text": { "type": "string" }
+      }
+    }
+  }
+}

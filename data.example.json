@@ -1,0 +1,318 @@
+{
+  "generated_at": "2026-06-29T07:16:07.865Z",
+  "source": "Sample data for the public EGC dashboard template",
+  "periods": ["7d", "30d", "90d", "180d", "all"],
+  "team": {},
+  "members": [
+    {
+      "user_record_id": "sample-ava",
+      "email": "ava@example.com",
+      "name": "Ava Martin",
+      "headline": "Founder",
+      "followers_total": 18420,
+      "slug": "ava",
+      "photo": "photos/ava.svg",
+      "periods": {
+        "7d": {
+          "posts": 2,
+          "impressions": 28400,
+          "likes": 248,
+          "comments": 42,
+          "reposts": 18,
+          "top_posts": [
+            {
+              "urn": "ava-2026-06-27",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-27T08:30:00.000Z",
+              "impressions": 18400,
+              "likes": 160,
+              "comments": 29,
+              "reposts": 12,
+              "text": "The tiny weekly ritual that made our team want to post again."
+            },
+            {
+              "urn": "ava-2026-06-24",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-24T09:10:00.000Z",
+              "impressions": 10000,
+              "likes": 88,
+              "comments": 13,
+              "reposts": 6,
+              "text": "We turned LinkedIn posting into a scoreboard, and suddenly it felt less lonely."
+            }
+          ]
+        },
+        "30d": {
+          "posts": 8,
+          "impressions": 76000,
+          "likes": 610,
+          "comments": 92,
+          "reposts": 43,
+          "top_posts": [
+            {
+              "urn": "ava-2026-06-12",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-12T10:00:00.000Z",
+              "impressions": 21000,
+              "likes": 171,
+              "comments": 21,
+              "reposts": 10,
+              "text": "A leaderboard works when it celebrates effort, not just celebrity."
+            },
+            {
+              "urn": "ava-2026-06-04",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-04T08:00:00.000Z",
+              "impressions": 16600,
+              "likes": 121,
+              "comments": 18,
+              "reposts": 9,
+              "text": "The best internal dashboards feel like rituals, not reports."
+            }
+          ]
+        },
+        "90d": {
+          "posts": 22,
+          "impressions": 184000,
+          "likes": 1420,
+          "comments": 240,
+          "reposts": 110,
+          "top_posts": [
+            {
+              "urn": "ava-2026-05-18",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-05-18T08:45:00.000Z",
+              "impressions": 42000,
+              "likes": 318,
+              "comments": 51,
+              "reposts": 25,
+              "text": "The post that convinced us to make social reach visible to the whole team."
+            },
+            {
+              "urn": "ava-2026-04-15",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-04-15T09:30:00.000Z",
+              "impressions": 31000,
+              "likes": 245,
+              "comments": 36,
+              "reposts": 17,
+              "text": "A simple way to help non-marketers share what they are learning."
+            }
+          ]
+        },
+        "180d": { "posts": 38, "impressions": 271000, "likes": 2100, "comments": 340, "reposts": 155 },
+        "all": { "posts": 52, "impressions": 352000, "likes": 2800, "comments": 430, "reposts": 190 }
+      }
+    },
+    {
+      "user_record_id": "sample-maya",
+      "email": "maya@example.com",
+      "name": "Maya Chen",
+      "headline": "Product lead",
+      "followers_total": 12680,
+      "slug": "maya",
+      "photo": "photos/maya.svg",
+      "periods": {
+        "7d": {
+          "posts": 3,
+          "impressions": 22100,
+          "likes": 185,
+          "comments": 24,
+          "reposts": 11,
+          "top_posts": [
+            {
+              "urn": "maya-2026-06-26",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-26T11:15:00.000Z",
+              "impressions": 11100,
+              "likes": 95,
+              "comments": 13,
+              "reposts": 5,
+              "text": "How our product team started writing in public without making it weird."
+            }
+          ]
+        },
+        "30d": {
+          "posts": 9,
+          "impressions": 69000,
+          "likes": 540,
+          "comments": 73,
+          "reposts": 31,
+          "top_posts": [
+            {
+              "urn": "maya-2026-06-07",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-07T08:20:00.000Z",
+              "impressions": 23500,
+              "likes": 184,
+              "comments": 27,
+              "reposts": 12,
+              "text": "The surprising thing that happened when engineers shared tiny product lessons."
+            }
+          ]
+        },
+        "90d": {
+          "posts": 24,
+          "impressions": 142000,
+          "likes": 1030,
+          "comments": 148,
+          "reposts": 64,
+          "top_posts": [
+            {
+              "urn": "maya-2026-05-07",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-05-07T07:50:00.000Z",
+              "impressions": 28000,
+              "likes": 210,
+              "comments": 31,
+              "reposts": 13,
+              "text": "A product changelog post outperformed our polished launch announcement."
+            }
+          ]
+        },
+        "180d": { "posts": 41, "impressions": 221000, "likes": 1610, "comments": 236, "reposts": 94 },
+        "all": { "posts": 59, "impressions": 306000, "likes": 2240, "comments": 319, "reposts": 130 }
+      }
+    },
+    {
+      "user_record_id": "sample-noah",
+      "email": "noah@example.com",
+      "name": "Noah Rivera",
+      "headline": "GTM engineer",
+      "followers_total": 7340,
+      "slug": "noah",
+      "photo": "photos/noah.svg",
+      "periods": {
+        "7d": {
+          "posts": 1,
+          "impressions": 15400,
+          "likes": 131,
+          "comments": 19,
+          "reposts": 8,
+          "top_posts": [
+            {
+              "urn": "noah-2026-06-25",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-25T13:00:00.000Z",
+              "impressions": 15400,
+              "likes": 131,
+              "comments": 19,
+              "reposts": 8,
+              "text": "I gave an agent one job: turn our LinkedIn stats into something people check."
+            }
+          ]
+        },
+        "30d": {
+          "posts": 6,
+          "impressions": 54000,
+          "likes": 420,
+          "comments": 61,
+          "reposts": 27,
+          "top_posts": [
+            {
+              "urn": "noah-2026-06-18",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-18T12:30:00.000Z",
+              "impressions": 17600,
+              "likes": 139,
+              "comments": 21,
+              "reposts": 10,
+              "text": "A tiny static dashboard beats a spreadsheet when the goal is momentum."
+            }
+          ]
+        },
+        "90d": {
+          "posts": 14,
+          "impressions": 93000,
+          "likes": 710,
+          "comments": 98,
+          "reposts": 41,
+          "top_posts": [
+            {
+              "urn": "noah-2026-04-22",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-04-22T12:00:00.000Z",
+              "impressions": 22400,
+              "likes": 170,
+              "comments": 26,
+              "reposts": 11,
+              "text": "The workflow that made our weekly content review take five minutes."
+            }
+          ]
+        },
+        "180d": { "posts": 25, "impressions": 138000, "likes": 1080, "comments": 151, "reposts": 58 },
+        "all": { "posts": 33, "impressions": 181000, "likes": 1420, "comments": 193, "reposts": 75 }
+      }
+    },
+    {
+      "user_record_id": "sample-lena",
+      "email": "lena@example.com",
+      "name": "Lena Ortiz",
+      "headline": "Customer lead",
+      "followers_total": 9660,
+      "slug": "lena",
+      "photo": "photos/lena.svg",
+      "periods": {
+        "7d": {
+          "posts": 2,
+          "impressions": 11800,
+          "likes": 96,
+          "comments": 16,
+          "reposts": 5,
+          "top_posts": [
+            {
+              "urn": "lena-2026-06-23",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-23T10:40:00.000Z",
+              "impressions": 7400,
+              "likes": 61,
+              "comments": 10,
+              "reposts": 3,
+              "text": "The customer story that finally got our support team posting."
+            }
+          ]
+        },
+        "30d": {
+          "posts": 7,
+          "impressions": 46800,
+          "likes": 365,
+          "comments": 54,
+          "reposts": 18,
+          "top_posts": [
+            {
+              "urn": "lena-2026-06-02",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-06-02T09:20:00.000Z",
+              "impressions": 15200,
+              "likes": 119,
+              "comments": 17,
+              "reposts": 7,
+              "text": "A customer quote is often a better post than a product announcement."
+            }
+          ]
+        },
+        "90d": {
+          "posts": 18,
+          "impressions": 104000,
+          "likes": 780,
+          "comments": 121,
+          "reposts": 44,
+          "top_posts": [
+            {
+              "urn": "lena-2026-05-13",
+              "url": "https://www.linkedin.com/",
+              "posted_at": "2026-05-13T09:00:00.000Z",
+              "impressions": 26500,
+              "likes": 201,
+              "comments": 30,
+              "reposts": 12,
+              "text": "The posts people remember usually start from a real conversation."
+            }
+          ]
+        },
+        "180d": { "posts": 31, "impressions": 163000, "likes": 1190, "comments": 186, "reposts": 68 },
+        "all": { "posts": 44, "impressions": 219000, "likes": 1600, "comments": 249, "reposts": 89 }
+      }
+    }
+  ]
+}
