@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "refresh:example": "node scripts/fetch-data.example.mjs > data.json && npm run build",
     "validate": "npm run build && node --check scripts/build.mjs"
   },
   "license": "MIT"

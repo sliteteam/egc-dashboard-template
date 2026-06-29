@@ -24,6 +24,21 @@ npm run build
 
 The dashboard is static. You can host `dist/` anywhere.
 
+## Auto Update
+
+The repo includes an optional scheduled refresh path. Add
+`scripts/fetch-data.mjs` so it prints schema-valid dashboard JSON to stdout, then
+use `.github/workflows/refresh-dashboard.yml` to rebuild, validate, commit, and
+deploy the dashboard on a schedule.
+
+Start from:
+
+```bash
+cp scripts/fetch-data.example.mjs scripts/fetch-data.mjs
+```
+
+More detail: [docs/auto-update.md](docs/auto-update.md).
+
 ## Recreate With An Agent
 
 Point your agent at this repository and say:
@@ -63,8 +78,10 @@ More detail: [docs/deploy-cloudflare-pages.md](docs/deploy-cloudflare-pages.md).
 ## Files
 
 - `AGENTS.md` tells coding agents how to recreate the dashboard.
+- `.github/workflows/refresh-dashboard.yml` is an optional scheduled refresh loop.
 - `data.schema.json` is the public data contract.
 - `data.example.json` is fake sample data.
+- `scripts/fetch-data.example.mjs` shows the refresh-script contract.
 - `src/template.html` is the visual dashboard.
 - `scripts/build.mjs` embeds data into the template and writes `dist/`.
 - `public/photos/` contains sample avatars copied into `dist/photos/`.
