@@ -28,13 +28,9 @@
       "type": "object",
       "required": ["name", "periods"],
       "properties": {
-        "user_record_id": { "type": "string" },
-        "email": { "type": "string" },
         "name": { "type": "string" },
         "headline": { "type": "string" },
         "followers_total": { "type": "number" },
-        "linkedin_connected": { "type": "boolean" },
-        "status": { "type": "string" },
         "slug": { "type": "string" },
         "photo": { "type": "string" },
         "periods": { "$ref": "#/$defs/periodMap" }

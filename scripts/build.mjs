@@ -57,13 +57,9 @@ function normalizeMembers(value) {
       periods[period] = normalizePeriod(periods[period]);
     }
     return {
-      user_record_id: member.user_record_id || slug,
-      email: member.email || "",
       name,
       headline: member.headline || "",
       followers_total: Number(member.followers_total) || 0,
-      linkedin_connected: member.linkedin_connected !== false,
-      status: member.status || "sample",
       periods,
       slug,
       photo: member.photo || `photos/${slug}.svg`,
@@ -99,7 +95,7 @@ function normalizePeriod(period = {}) {
 function normalizePost(post = {}, index) {
   return {
     urn: post.urn || `post-${index}`,
-    url: post.url || "#",
+    url: safeUrl(post.url),
     posted_at: post.posted_at || new Date().toISOString(),
     impressions: num(post.impressions),
     likes: num(post.likes),
@@ -107,6 +103,15 @@ function normalizePost(post = {}, index) {
     reposts: num(post.reposts),
     text: post.text || "",
   };
+}
+
+function safeUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return /^https?:$/.test(url.protocol) ? url.href : "#";
+  } catch {
+    return "#";
+  }
 }
 
 function deriveTeamTotals(value) {

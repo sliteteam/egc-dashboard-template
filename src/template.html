@@ -374,6 +374,7 @@
     else { blocks.forEach(function(el){ el.style.transitionDelay="0ms"; el.classList.add("shown"); }); }
     if(doCount||first) playCounts(root); doCount=false; }
   function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c];}); }
+  function href(s){ try{ var u=new URL(String(s||""),location.href); return /^https?:$/.test(u.protocol)?esc(u.href):"#"; }catch(e){ return "#"; } }
   function pcol(m){ return COL[m._i%COL.length]; }
   function st(m,p){ return m.periods[p||state.period]||{posts:0,impressions:0,engagements:0,likes:0,comments:0,reposts:0,eng_rate:0,avg:{}}; }
   function engPP(m,p){ var a=st(m,p).avg||{}; return Math.round((a.likes||0)+(a.comments||0)+(a.reposts||0)); }
@@ -384,7 +385,7 @@
   function teamVsPrev(key){ var w=state.period; if(w==="all"||!WD[w])return null; var span=WD[w]*DAY,c=0,p=0; DATA.members.forEach(function(m){ dposts(m).forEach(function(x){ var v=key==="eng"?x.eng:(key==="posts"?1:x.imp); if(x.t>=NOW-span)c+=v; else if(x.t>=NOW-2*span)p+=v; }); }); return p>0?(c-p)/p:null; }
   function teamTot(p){ var t={impressions:0,engagements:0,posts:0,posters:0}; DATA.members.forEach(function(m){var s=st(m,p); t.impressions+=s.impressions; t.engagements+=s.engagements; t.posts+=s.posts; if(s.posts>0)t.posters++;}); return t; }
   function dchip(d){ if(d==null)return '<span class="flat">new</span>'; var dir=d>0.005?"up":d<-0.005?"down":"flat"; return '<span class="'+dir+'">'+(dir==="up"?"▲":dir==="down"?"▼":"▬")+" "+Math.abs(Math.round(d*100))+"%</span>"; }
-  function windowsLed(m){ var c=0; DATA.periods.forEach(function(p){ var a=active(p); if(a[0]&&a[0].m.user_record_id===m.user_record_id)c++; }); return c; }
+  function windowsLed(m){ var c=0; DATA.periods.forEach(function(p){ var a=active(p); if(a[0]&&a[0].m===m)c++; }); return c; }
   function bestBy(fn,p){ var b=null,v=-1; DATA.members.forEach(function(m){ if(st(m,p).posts<=0)return; var x=fn(m,p); if(x>v){v=x;b=m;} }); return {m:b,v:v}; }
   function first(m){ return m?esc(m.name.split(" ")[0]):"—"; }
   function months(n){ var base=new Date(NOW),o=[]; for(var i=n-1;i>=0;i--){ var d=new Date(base.getFullYear(),base.getMonth()-i,1); o.push({label:d.toLocaleString("en",{month:"short"}),start:d.getTime(),end:new Date(d.getFullYear(),d.getMonth()+1,1).getTime()}); } return o; }
@@ -472,7 +473,7 @@
           '<div class="tptext">'+txt+'</div>'+
           '<div class="tpeng"><span>'+fmt(t.likes||0)+' <small>likes</small></span><span>'+fmt(t.comments||0)+' <small>comments</small></span><span>'+fmt(t.reposts||0)+' <small>reposts</small></span></div></div>'+
         '<div class="tpright"><div class="tpreach tnum">'+nspan(t.impressions||0,"fmt")+'<small>reach</small></div>'+
-          '<a class="tplink" href="'+esc(t.url)+'" target="_blank" rel="noopener">Open ↗</a></div></div>';
+          '<a class="tplink" href="'+href(t.url)+'" target="_blank" rel="noopener">Open ↗</a></div></div>';
     }).join("");
     document.getElementById("v-topposts").innerHTML=note+'<div class="tp-list rv">'+rows+'</div>';
   }
