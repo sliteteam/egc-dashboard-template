@@ -73,9 +73,9 @@ More detail: [docs/deploy-cloudflare-pages.md](docs/deploy-cloudflare-pages.md).
 
 ## Privacy
 
-Do not commit tokens, private post analytics, private customer data, or raw
-employee exports you do not want public. For a public demo, use anonymized data
-or data from posts that are already public.
+Do not commit tokens, private post analytics, private customer data, emails,
+internal IDs, or raw employee exports you do not want public. For a public demo,
+use anonymized data or data from posts that are already public.
 
 ## Built By Slite
 

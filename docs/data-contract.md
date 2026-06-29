@@ -19,8 +19,6 @@ Each member has profile fields plus `periods`.
 
 ```json
 {
-  "user_record_id": "user_1",
-  "email": "ava@example.com",
   "name": "Ava Martin",
   "headline": "Founder",
   "followers_total": 12000,

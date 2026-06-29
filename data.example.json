@@ -1,12 +1,16 @@
 {
   "generated_at": "2026-06-29T07:16:07.865Z",
   "source": "Sample data for the public EGC dashboard template",
-  "periods": ["7d", "30d", "90d", "180d", "all"],
+  "periods": [
+    "7d",
+    "30d",
+    "90d",
+    "180d",
+    "all"
+  ],
   "team": {},
   "members": [
     {
-      "user_record_id": "sample-ava",
-      "email": "ava@example.com",
       "name": "Ava Martin",
       "headline": "Founder",
       "followers_total": 18420,
@@ -100,13 +104,23 @@
             }
           ]
         },
-        "180d": { "posts": 38, "impressions": 271000, "likes": 2100, "comments": 340, "reposts": 155 },
-        "all": { "posts": 52, "impressions": 352000, "likes": 2800, "comments": 430, "reposts": 190 }
+        "180d": {
+          "posts": 38,
+          "impressions": 271000,
+          "likes": 2100,
+          "comments": 340,
+          "reposts": 155
+        },
+        "all": {
+          "posts": 52,
+          "impressions": 352000,
+          "likes": 2800,
+          "comments": 430,
+          "reposts": 190
+        }
       }
     },
     {
-      "user_record_id": "sample-maya",
-      "email": "maya@example.com",
       "name": "Maya Chen",
       "headline": "Product lead",
       "followers_total": 12680,
@@ -170,13 +184,23 @@
             }
           ]
         },
-        "180d": { "posts": 41, "impressions": 221000, "likes": 1610, "comments": 236, "reposts": 94 },
-        "all": { "posts": 59, "impressions": 306000, "likes": 2240, "comments": 319, "reposts": 130 }
+        "180d": {
+          "posts": 41,
+          "impressions": 221000,
+          "likes": 1610,
+          "comments": 236,
+          "reposts": 94
+        },
+        "all": {
+          "posts": 59,
+          "impressions": 306000,
+          "likes": 2240,
+          "comments": 319,
+          "reposts": 130
+        }
       }
     },
     {
-      "user_record_id": "sample-noah",
-      "email": "noah@example.com",
       "name": "Noah Rivera",
       "headline": "GTM engineer",
       "followers_total": 7340,
@@ -240,13 +264,23 @@
             }
           ]
         },
-        "180d": { "posts": 25, "impressions": 138000, "likes": 1080, "comments": 151, "reposts": 58 },
-        "all": { "posts": 33, "impressions": 181000, "likes": 1420, "comments": 193, "reposts": 75 }
+        "180d": {
+          "posts": 25,
+          "impressions": 138000,
+          "likes": 1080,
+          "comments": 151,
+          "reposts": 58
+        },
+        "all": {
+          "posts": 33,
+          "impressions": 181000,
+          "likes": 1420,
+          "comments": 193,
+          "reposts": 75
+        }
       }
     },
     {
-      "user_record_id": "sample-lena",
-      "email": "lena@example.com",
       "name": "Lena Ortiz",
       "headline": "Customer lead",
       "followers_total": 9660,
@@ -310,8 +344,20 @@
             }
           ]
         },
-        "180d": { "posts": 31, "impressions": 163000, "likes": 1190, "comments": 186, "reposts": 68 },
-        "all": { "posts": 44, "impressions": 219000, "likes": 1600, "comments": 249, "reposts": 89 }
+        "180d": {
+          "posts": 31,
+          "impressions": 163000,
+          "likes": 1190,
+          "comments": 186,
+          "reposts": 68
+        },
+        "all": {
+          "posts": 44,
+          "impressions": 219000,
+          "likes": 1600,
+          "comments": 249,
+          "reposts": 89
+        }
       }
     }
   ]
