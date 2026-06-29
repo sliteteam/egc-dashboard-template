@@ -49,10 +49,7 @@
   .lede{ font-size:14.5px; color:var(--ink2); margin:13px 0 14px; animation:rise .72s var(--ease) both .16s; }
   .lede b{ color:var(--ink); font-weight:700; }
   .slite-built{ display:flex; flex-direction:column; align-items:flex-start; gap:7px; margin:0 0 16px; animation:rise .72s var(--ease) both .2s; }
-  .slite-chip,.repo-chip{ display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; max-width:100%; padding:9px 13px; border-radius:14px; background:color-mix(in srgb,var(--orange) 12%, var(--surface)); border:1px solid color-mix(in srgb,var(--orange) 35%, var(--line)); box-shadow:var(--shadow); font-size:13px; color:var(--ink2); }
-  .slite-chip strong{ color:var(--ink); font-family:var(--disp); font-weight:800; }
-  .slite-chip a{ color:var(--orange-d); font-weight:800; text-underline-offset:3px; }
-  .repo-chip{ gap:7px; padding:7px 11px; border-radius:999px; background:var(--surface); border-color:var(--line); color:var(--ink2); font-weight:750; text-decoration:none; }
+  .repo-chip{ display:inline-flex; align-items:center; gap:7px; flex-wrap:wrap; max-width:100%; padding:7px 11px; border-radius:999px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); color:var(--ink2); font-size:13px; font-weight:750; text-decoration:none; }
   .repo-chip:hover{ color:var(--ink); box-shadow:var(--shadow-h); transform:translateY(-1px); }
   .repo-chip svg{ width:16px; height:16px; flex:none; fill:currentColor; }
 
@@ -324,7 +321,6 @@
       <div class="gradrule"></div>
       <div class="lede" id="lede"></div>
       <div class="slite-built">
-        <div class="slite-chip"><strong>What is Slite?</strong><span>A knowledge base with an agent that keeps docs fresh.</span><a href="https://slite.com" target="_blank" rel="noopener">slite.com</a></div>
         <a class="repo-chip" href="https://github.com/sliteteam/egc-dashboard-template" target="_blank" rel="noopener" aria-label="Dashboard template on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.5 15.6c.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-.9-2.7-.9-.3-.9-.8-1.1-.8-1.1-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.8 2.2.6.1-.5.3-.8.5-1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.5 7.5 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3-1.8 3.7-3.6 3.9.3.3.6.8.6 1.6v2c0 .2.1.5.6.4A8 8 0 0 0 8 .2Z"/></svg><span>Dashboard template</span></a>
       </div>
     </div>
