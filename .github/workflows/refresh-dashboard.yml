@@ -1,0 +1,80 @@
+name: Refresh dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily at 07:00 UTC. Change this to match your reporting rhythm.
+    - cron: "0 7 * * *"
+
+concurrency:
+  group: refresh-dashboard
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    name: Fetch data, build, and deploy
+    runs-on: ubuntu-latest
+
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts --package-lock=false
+
+      - name: Fetch dashboard data
+        id: fetch
+        run: |
+          if [ ! -f scripts/fetch-data.mjs ]; then
+            echo "::notice::No scripts/fetch-data.mjs found. Copy scripts/fetch-data.example.mjs and wire your source system to enable scheduled refresh."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          node scripts/fetch-data.mjs > data.json
+          echo "configured=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build and validate dashboard
+        if: steps.fetch.outputs.configured == 'true'
+        run: npm run validate
+
+      - name: Commit refreshed output
+        if: steps.fetch.outputs.configured == 'true'
+        run: |
+          git add -f data.json dist/
+
+          if git diff --cached --quiet; then
+            echo "No dashboard changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh EGC dashboard data"
+          git push
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.fetch.outputs.configured == 'true'
+        run: |
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Skipping direct Cloudflare deploy."
+            echo "Connect Cloudflare Pages to this repository, or set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN secrets."
+            exit 0
+          fi
+
+          npx --yes wrangler@latest pages deploy dist --project-name "${CLOUDFLARE_PAGES_PROJECT:-egc-dashboard}"

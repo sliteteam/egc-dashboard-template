@@ -31,12 +31,12 @@ dist
 
 ## Keeping It Fresh
 
-If your data source has an API, add a scheduled GitHub Action that:
+If your data source has an API, use the included scheduled GitHub Action:
 
-1. Fetches metrics.
-2. Writes `data.json`.
-3. Runs `npm run build`.
-4. Deploys `dist/`.
+```bash
+cp scripts/fetch-data.example.mjs scripts/fetch-data.mjs
+# edit scripts/fetch-data.mjs for your source
+```
 
-Keep API tokens in GitHub Actions secrets or Cloudflare environment variables.
-Never commit them.
+Then read [docs/auto-update.md](auto-update.md). Keep API tokens in GitHub
+Actions secrets or Cloudflare environment variables. Never commit them.

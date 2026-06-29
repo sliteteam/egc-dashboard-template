@@ -18,6 +18,19 @@ Netlify, or GitHub Pages.
 5. Open or screenshot `dist/index.html` if the user wants visual QA.
 6. Deploy `dist/` if requested.
 
+## Automatic Refresh
+
+If the user wants the dashboard to update itself, use the GitHub Actions path in
+`docs/auto-update.md`.
+
+1. Copy `scripts/fetch-data.example.mjs` to `scripts/fetch-data.mjs`.
+2. Replace the example logic with the user's real source system.
+3. Make the script print a complete schema-valid JSON object to stdout.
+4. Keep tokens in environment variables or GitHub Actions secrets.
+5. Run `node scripts/fetch-data.mjs > data.json` and `npm run validate`.
+6. Commit the workflow, fetch script, `data.json`, and `dist/` only after
+   checking that the generated data is safe to be public.
+
 ## Data Contract
 
 The dashboard needs team members with the same period keys:
