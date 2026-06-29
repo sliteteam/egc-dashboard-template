@@ -4,9 +4,7 @@ A static, agent-friendly template for building an Employee Generated Content
 leaderboard: team reach, top posts, race animation, trends, and per-poster
 benchmarks.
 
-This is the public version of the Slite EGC dashboard. It does not include
-Slite's internal report host, Cloudflare Access, upload flows, or private
-MagicPost credentials. It is just the reusable dashboard engine.
+This is the public version of the Slite EGC dashboard.
 
 ## Quick Start
 
