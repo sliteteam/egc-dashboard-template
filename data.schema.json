@@ -33,6 +33,19 @@
         "followers_total": { "type": "number" },
         "slug": { "type": "string" },
         "photo": { "type": "string" },
+        "activity_posts": {
+          "type": "array",
+          "description": "Optional all-post dated feed used for activity heatmaps. If omitted, top_posts are used as a partial fallback.",
+          "items": { "$ref": "#/$defs/activityPost" }
+        },
+        "activity_coverage": {
+          "type": "object",
+          "description": "Optional coverage metadata for the activity feed.",
+          "properties": {
+            "aggregate_posts": { "type": "number" },
+            "dated_posts": { "type": "number" }
+          }
+        },
         "periods": { "$ref": "#/$defs/periodMap" }
       }
     },
@@ -73,6 +86,24 @@
         "comments": { "type": "number" },
         "reposts": { "type": "number" },
         "text": { "type": "string" }
+      }
+    },
+    "activityPost": {
+      "type": "object",
+      "required": ["posted_at"],
+      "properties": {
+        "urn": { "type": "string" },
+        "url": { "type": "string" },
+        "posted_at": { "type": "string", "format": "date-time" },
+        "impressions": { "type": "number" },
+        "likes": { "type": "number" },
+        "comments": { "type": "number" },
+        "reposts": { "type": "number" },
+        "text": { "type": "string" },
+        "source_flags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     }
   }

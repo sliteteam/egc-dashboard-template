@@ -24,6 +24,11 @@ Each member has profile fields plus `periods`.
   "followers_total": 12000,
   "slug": "ava",
   "photo": "photos/ava.svg",
+  "activity_posts": [],
+  "activity_coverage": {
+    "aggregate_posts": 52,
+    "dated_posts": 48
+  },
   "periods": {
     "30d": {
       "posts": 8,
@@ -65,3 +70,23 @@ charts, race animation, and previous-period comparison chips.
 
 Use public post URLs when possible. Avoid storing private notes or non-public
 analytics unless the repository stays private.
+
+## Activity Posts
+
+`activity_posts` is optional but recommended. Use it when your source can export
+all dated posts for a member, not only their top posts. The compact activity
+heatmaps use this feed first and fall back to `top_posts` when it is absent.
+
+```json
+{
+  "urn": "post_456",
+  "url": "https://www.linkedin.com/feed/update/...",
+  "posted_at": "2026-06-28T09:30:00.000Z",
+  "impressions": 4200,
+  "likes": 38,
+  "comments": 5,
+  "reposts": 2,
+  "text": "Short public preview",
+  "source_flags": ["analytics"]
+}
+```

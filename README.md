@@ -2,7 +2,7 @@
 
 A static, agent-friendly template for building an Employee Generated Content
 leaderboard: team reach, top posts, race animation, trends, and per-poster
-benchmarks.
+activity.
 
 This is the public version of the Slite EGC dashboard.
 
@@ -60,6 +60,7 @@ The included dashboard expects aggregated metrics by person and period:
 - impressions / reach
 - likes, comments, reposts
 - top posts with public URLs and timestamps
+- optional all-post `activity_posts` for accurate activity heatmaps
 - follower counts
 
 You can feed it from MagicPost, Shield, Taplio, a spreadsheet export, a warehouse

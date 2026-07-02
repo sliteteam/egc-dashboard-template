@@ -45,6 +45,10 @@ reposts, engagements, engagement rate, average metrics per post, and top posts.
 Top posts drive the race animation, monthly trend, and previous-period chips, so
 include posted timestamps when possible.
 
+For the compact per-poster activity view, include each member's optional
+`activity_posts` array when the source system can provide all dated posts. The
+dashboard falls back to `top_posts`, but that makes the activity heatmap partial.
+
 ## Hosting
 
 For Cloudflare Pages:
