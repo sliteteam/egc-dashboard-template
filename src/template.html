@@ -382,31 +382,6 @@
   .intro-skip:hover{ color:var(--ink2); }
   @media (prefers-reduced-motion:reduce){ .intro{ display:none; } }
 </style>
-<!-- amstrad-theme-injected -->
-<link rel="stylesheet" href="/assets/amstrad-theme.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-<script>
-  // Activate Amstrad theme when explicitly requested. The richer dashboard
-  // styling remains the default for normal report views.
-  (function () {
-    function setup() {
-      var force = (location.search || "").indexOf("theme=amstrad") !== -1;
-      if (!force) return;
-      document.body.classList.add("amstrad-theme");
-      var iframed = window.self !== window.top;
-      if (!iframed) document.body.classList.add("amstrad-theme-standalone");
-      document.body.addEventListener("dblclick", function () {
-        document.body.classList.toggle("rich");
-      });
-    }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", setup);
-    } else {
-      setup();
-    }
-  })();
-</script>
 </head>
 <body>
   <div class="intro" id="intro" role="dialog" aria-label="Reach Race leader reveal">
