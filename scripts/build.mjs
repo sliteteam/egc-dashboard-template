@@ -56,6 +56,12 @@ function normalizeMembers(value) {
     for (const period of value.periods) {
       periods[period] = normalizePeriod(periods[period]);
     }
+    const providedActivity = Array.isArray(member.activity_posts)
+      ? member.activity_posts.map(normalizeActivityPost).filter(Boolean)
+      : [];
+    const activityPosts = providedActivity.length
+      ? dedupeActivityPosts(providedActivity)
+      : activityPostsFromPeriods(periods);
     return {
       name,
       headline: member.headline || "",
@@ -63,6 +69,8 @@ function normalizeMembers(value) {
       periods,
       slug,
       photo: member.photo || `photos/${slug}.svg`,
+      activity_posts: activityPosts,
+      activity_coverage: normalizeActivityCoverage(member.activity_coverage, periods, activityPosts),
     };
   });
 }
@@ -102,6 +110,58 @@ function normalizePost(post = {}, index) {
     comments: num(post.comments),
     reposts: num(post.reposts),
     text: post.text || "",
+  };
+}
+
+function normalizeActivityPost(post = {}, index = 0) {
+  const postedAt = post.posted_at || post.date || "";
+  if (!postedAt) return null;
+  const sourceFlags = Array.isArray(post.source_flags)
+    ? post.source_flags.map(String).filter(Boolean)
+    : post.source
+      ? [String(post.source)]
+      : [];
+  return {
+    urn: post.urn || `activity-${index}`,
+    url: safeUrl(post.url),
+    posted_at: postedAt,
+    impressions: num(post.impressions),
+    likes: num(post.likes),
+    comments: num(post.comments),
+    reposts: num(post.reposts),
+    text: post.text || "",
+    source_flags: sourceFlags,
+  };
+}
+
+function dedupeActivityPosts(posts) {
+  const seen = new Set();
+  const out = [];
+  for (const post of posts) {
+    const urlKey = post.url && post.url !== "#" && post.url !== "https://www.linkedin.com/" ? post.url : "";
+    const key = urlKey || post.urn || `${post.posted_at}:${post.text.slice(0, 40)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(post);
+  }
+  return out.sort((a, b) => new Date(a.posted_at) - new Date(b.posted_at));
+}
+
+function activityPostsFromPeriods(periods = {}) {
+  const posts = [];
+  for (const period of Object.values(periods)) {
+    for (const post of period.top_posts || []) {
+      const normalized = normalizeActivityPost({ ...post, source_flags: ["top_posts"] }, posts.length);
+      if (normalized) posts.push(normalized);
+    }
+  }
+  return dedupeActivityPosts(posts);
+}
+
+function normalizeActivityCoverage(coverage = {}, periods = {}, activityPosts = []) {
+  return {
+    aggregate_posts: num(coverage.aggregate_posts) || num(periods.all?.posts) || activityPosts.length,
+    dated_posts: num(coverage.dated_posts) || activityPosts.length,
   };
 }
 
@@ -160,16 +220,19 @@ function deriveComparisonsAndTrend(value) {
 function datedPosts(member) {
   const seen = new Set();
   const out = [];
-  for (const period of Object.values(member.periods || {})) {
-    for (const post of period.top_posts || []) {
-      if (seen.has(post.urn)) continue;
-      seen.add(post.urn);
-      out.push({
-        t: new Date(post.posted_at).getTime(),
-        imp: post.impressions || 0,
-        eng: (post.likes || 0) + (post.comments || 0) + (post.reposts || 0),
-      });
-    }
+  const posts = Array.isArray(member.activity_posts) && member.activity_posts.length
+    ? member.activity_posts
+    : activityPostsFromPeriods(member.periods || {});
+  for (const post of posts) {
+    const urlKey = post.url && post.url !== "#" && post.url !== "https://www.linkedin.com/" ? post.url : "";
+    const key = urlKey || post.urn || `${post.posted_at}:${String(post.text || "").slice(0, 40)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({
+      t: new Date(post.posted_at).getTime(),
+      imp: post.impressions || 0,
+      eng: (post.likes || 0) + (post.comments || 0) + (post.reposts || 0),
+    });
   }
   return out.filter((post) => Number.isFinite(post.t));
 }
